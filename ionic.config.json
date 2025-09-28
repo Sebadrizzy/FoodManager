@@ -1,0 +1,7 @@
+{
+  "name": "FoodTrackingService",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
