@@ -12,6 +12,8 @@ import { FormsModule } from '@angular/forms';
 })
 export class HeaderComponent  implements OnInit {
   @Input() title!:string ;
+  @Input() backButton!: string;
+
   constructor() { }
 
   ngOnInit() {}

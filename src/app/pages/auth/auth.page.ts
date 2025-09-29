@@ -33,6 +33,7 @@ export class AuthPage implements OnInit {
 
   async submit() {
     if (!this.form.valid) return;
+
     const loading = await this.utilsSvc.loading();
     await loading.present();
 
@@ -40,8 +41,7 @@ export class AuthPage implements OnInit {
 
     try {
       const res = await this.firebaseSvc.signIn(credentials);
-      console.log('Signed in:', res);
-      // ...puedes agregar navegación o lógica extra aquí...
+      this.getUserInfo(res.user.uid);
     } catch (err: any) {
       console.error('Sign in error:', err);
       this.utilsSvc.presentToast({
@@ -63,5 +63,54 @@ export class AuthPage implements OnInit {
   get password(): FormControl {
     return this.form.controls['password'] as FormControl;
   }
+
+
+  async getUserInfo(uid: string) {
+
+  if (!this.form.valid) return;
+
+  const loading = await this.utilsSvc.loading();
+  await loading.present();
+
+  let path = `Users/${uid}`;
+
+  this.firebaseSvc.getDocument(path).then((user: User | undefined) => {
+    this.utilsSvc.saveinLocalStorage('user', user);
+    this.utilsSvc.routerlink('/main/home');
+    this.form.reset();
+
+    let welcomeMessage = 'Te damos la bienvenida';
+    if (user && user.name) {
+      welcomeMessage += `, ${user.name}`;
+    } else {
+      welcomeMessage += ' usuario';
+    }
+
+    this.utilsSvc.presentToast({
+      message: welcomeMessage,
+      duration: 2000,
+      color: 'primary',
+      position: 'middle',
+      icon: 'person-circle-outline'
+    });
+
+  }).catch((err: any) => {
+    console.error(err);
+
+    this.utilsSvc.presentToast({
+      message: err.message,
+      duration: 3000,
+      color: 'danger',
+      position: 'middle',
+      icon: 'alert-circle-outline'
+    });
+
+  }).finally(() => {
+    loading.dismiss();
+  });
+}
+
+
+
 }
   
