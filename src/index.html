@@ -17,6 +17,9 @@
   <!-- add to homescreen for ios -->
   <meta name="mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+
+  <!-- Development-only CSP: permite 'unsafe-eval' para evitar bloqueo de eval en dev server -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https: 'unsafe-inline'; script-src 'self' 'unsafe-eval' 'unsafe-inline' https:; style-src 'self' 'unsafe-inline' https:; img-src 'self' data: https:;">
 </head>
 
 <body>
