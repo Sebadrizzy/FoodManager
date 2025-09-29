@@ -72,7 +72,7 @@ Sistema web para la gestión de productos alimenticios, permitiendo registrar, e
 ---
 
 ## Prototipo de diseño 
-[Figma - Prototipo de Gestión de Productos](https://www.figma.com/design/P5ZCkmvzJPXbf0Q4MrjiHx/Dise%C3%B1oprototipos?node-id=0-1&t=yTsY3fzxhUPc6GON-1)
+[Figma - Prototipo de Gestión de Productos](https://www.figma.com/design/6byzYver6ICzmizeFhhuId/FoodManager?node-id=1-5913&p=f&t=DsVMZ6Vtd0irQKjJ-0)
 
 ---
 
