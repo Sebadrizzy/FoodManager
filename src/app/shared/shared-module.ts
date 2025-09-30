@@ -1,28 +1,19 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HeaderComponent } from './components/header/header.component';
-import { CustomInputComponent } from './components/custom-input/custom-input.component';
-import { LogoComponent } from './components/logo/logo.component';
-import { IonicModule } from '@ionic/angular';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
-
+// importa aquí tus componentes compartidos, por ejemplo:
+import { HeaderComponent } from './components/header/header.component';
 
 @NgModule({
   imports: [
     CommonModule,
-    IonicModule,
-    ReactiveFormsModule,
     FormsModule,
-    HeaderComponent,
-    CustomInputComponent,
-    LogoComponent
+    ReactiveFormsModule
   ],
   exports: [
-    HeaderComponent,
+    CommonModule,
+    FormsModule,
     ReactiveFormsModule,
-    CustomInputComponent,
-    LogoComponent
   ]
 })
-export class SharedModule { }
+export class SharedModule {}
